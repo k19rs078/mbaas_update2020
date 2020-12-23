@@ -12,9 +12,16 @@
     let ncmb = new NCMB(appKey, clientKey);
     let UTdata = ncmb.DataStore("UpdateTest");
     let key = "score";
+    let key2 = "today";
+
+    var date = new Date();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+
     function enterData() {
       let uTdata = new UTdata();
       let value = parseInt($("#data").val());
+      let today = month*100 + day;
       uTdata.set(key, value)
       .save()
       .then(function(results){
