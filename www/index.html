@@ -150,6 +150,20 @@
     <input type="text" id="update" placeholder="更新">
     <a onclick="updateData()" class="btn btn-outline-secondary" role="button">Update</a>
   </div>
+  <table>
+  <caption id=calorie>カロリー表</caption>
+    <select name="jiki">
+    <option value="morning">朝食</option>
+    <option value="lunch">昼食</option>
+    <option value="dinner">夕食</option>
+    </select>
+
+    <tr><th>選択</th><th>種類</th><th>kcal</th></tr>
+    <tr><td> <input type="checkbox" name="rice" value="j"></td><td>ごはん</td><td>200</td></tr>
+    <tr><td> <input type="checkbox" name="fish" value="j"></td><td>さかな</td><td>200</td></tr>
+    <tr><td> <input type="checkbox" name="misosoup" value="j"></td><td>味噌汁</td><td>200</td></tr>
+  </tr>
+  </table>
   <div id="display" class="text-light bg-info">
     Results
   </div>
