@@ -18,6 +18,12 @@
     var month = date.getMonth()+1;
     var day = date.getDate();
 
+    var lk=0;
+    var mk=0;
+    var dk=0;
+
+    var calories = [235, 264, 237, 200, 382];
+
     function enterData() {
       let uTdata = new UTdata();
       let value = parseInt($("#data").val());
@@ -131,6 +137,31 @@
         $("#display").html("update fail:" + JSON.stringify(error))
       })
     }
+
+    function decidemenu(){
+      var check=document.getElementsByName("food");
+      var sum=0;
+      for(var i=0; i<check.length; i++){
+        if(check[i].checked==true){
+         sum+=calories[i]
+         check[i].checked=false;
+        }
+      }
+
+      var selectedValue = $("#select01").val();
+      if(selectedValue=="morning"){
+        mk=sum;
+        $("#mor").html("朝食："+mk+"kcal");
+      }else if(selectedValue=="lunch"){
+        lk=sum;
+        $("#lun").html("昼食："+lk+"kcal");
+      }else if(selectedValue=="dinner"){
+        dk=sum;
+        $("#din").html("夕食："+dk+"kcal");
+      }
+      var all=mk+lk+dk;
+      $("#sum").html("合計："+all+"kcal");
+    }
     </script>
 </head>
 <body>
@@ -150,20 +181,39 @@
     <input type="text" id="update" placeholder="更新">
     <a onclick="updateData()" class="btn btn-outline-secondary" role="button">Update</a>
   </div>
-  <table>
-  <caption id=calorie>カロリー表</caption>
-    <select name="jiki">
+  <div>
+    <select id="select01">
     <option value="morning">朝食</option>
     <option value="lunch">昼食</option>
     <option value="dinner">夕食</option>
     </select>
+  </div>
+  <div id="mor">
+   朝食：0kcal
+  </div>
+  <div id="lun">
+   昼食：0kcal
+  </div>
+  <div id="din">
+   夕食：0kcal
+  </div>
+   <div id="sum">
+   合計：0kcal
+  </div>
+  <table>
+  <caption id=calorie>カロリー表</caption>
 
     <tr><th>選択</th><th>種類</th><th>kcal</th></tr>
-    <tr><td> <input type="checkbox" name="rice" value="j"></td><td>ごはん</td><td>200</td></tr>
-    <tr><td> <input type="checkbox" name="fish" value="j"></td><td>さかな</td><td>200</td></tr>
-    <tr><td> <input type="checkbox" name="misosoup" value="j"></td><td>味噌汁</td><td>200</td></tr>
+    <tr><td> <input type="checkbox" name="food"></td><td>ご飯(普通盛り)</td><td>235</td></tr>
+    <tr><td> <input type="checkbox" name="food"></td><td>食パン1枚</td><td>264</td></tr>
+    <tr><td> <input type="checkbox" name="food"></td><td>さけ</td><td>237</td></tr>
+    <tr><td> <input type="checkbox" name="food"></td><td>味噌汁</td><td>200</td></tr>
+     <tr><td> <input type="checkbox" name="food"></td><td>きつねうどん</td><td>382</td></tr>
   </tr>
   </table>
+  <div id="wrap">
+    <a onclick="decidemenu()" class="btn btn-outline-secondary" role="button">確定</a>
+  </div>
   <div id="display" class="text-light bg-info">
     Results
   </div>
