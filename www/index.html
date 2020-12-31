@@ -57,13 +57,14 @@
     function fetchAll() {
       UTdata.fetchAll()
       .then(function(results){
-        let msg="";
+        let msg="<table><tr><th>日付</th><th>総kcal</th></tr>";
         for(let i=0; i<results.length; i++){
-          msg += results[i].get(key) + "<br>";
+          var mt=Math.floor(results[i].get(key2)/100);
+          let dt=results[i].get(key2)-mt*100;
+          msg +="<tr><td>"+ mt + "月"  + dt + "日</td><td>"+ results[i].get(key) + "kcal" + "</td></tr>";
         }
+        msg+="<table>";
         $("#display").removeClass();
-        $("#display").addClass("text-light");
-        $("#display").addClass("bg-primary");
         $("#display").html(msg);
       })
       .catch(function(error){

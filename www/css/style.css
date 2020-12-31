@@ -17,3 +17,7 @@ caption#calorie{
 #wrap{
   text-align: right;
 }
+
+#display{
+  text-align: center;
+}
