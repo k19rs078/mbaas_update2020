@@ -21,6 +21,7 @@
     var lk=0;
     var mk=0;
     var dk=0;
+    var all=0;
 
     var calories = [235, 264, 237, 200, 382];
 
@@ -121,15 +122,16 @@
       })
     }
     function sortData() {
-      UTdata.order(key,true).fetchAll()
+      UTdata.order(key2,false).fetchAll()
       .then(function(results){
-        let msg = "";
+        let msg = "<table><tr><th>日付</th><th>総kcal</th></tr>";
         for(let i = 0; i < results.length; i++){
-          msg += results[i].get(key) + "<br>";
+          var mt=Math.floor(results[i].get(key2)/100);
+          let dt=results[i].get(key2)-mt*100;
+          msg +="<tr><td>"+ mt + "月"  + dt + "日</td><td>"+ results[i].get(key) + "kcal" + "</td></tr>";
         }
+        msg+="<table>"
         $("#display").removeClass();
-        $("#display").addClass("text-light");
-        $("#display").addClass("bg-primary");
         $("#display").html(msg);
       })
       .catch(function(error){
@@ -160,7 +162,7 @@
         dk=sum;
         $("#din").html("夕食："+dk+"kcal");
       }
-      var all=mk+lk+dk;
+      all=mk+lk+dk;
       $("#sum").html("合計："+all+"kcal");
     }
     </script>
