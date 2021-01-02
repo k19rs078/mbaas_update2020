@@ -163,6 +163,7 @@
       }
       all=mk+lk+dk;
       $("#sum").html("合計："+all+"kcal");
+      $("#regist").html("登録値："+all+"kcal"); 
     }
     </script>
 </head>
@@ -170,6 +171,11 @@
   <h1 class="text-light bg-secondary">カロリー管理</h1>
   <div>
     <p>毎日一回記入してください</p>
+  </div>
+  <div id="regist">
+    登録値：0kcal
+  </div>
+  <div id="registEnter">
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div>
   <div>
