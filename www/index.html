@@ -97,7 +97,6 @@
           msg +="<tr><td>"+ mt + "月"  + dt + "日</td><td>"+ results[i].get(key) + "kcal" + "</td></tr>";
         }
         msg+="<table>"
-        $("#display").removeClass();
         $("#display").html(msg);
       })
       .catch(function(error){
@@ -143,7 +142,7 @@
     登録値：0kcal
   </div>
   <div id="registEnter">
-    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+    <a onclick="enterData()" class="btn btn-outline-secondary" role="button">登録</a>
   </div>
   <div>
     <select id="select01">
