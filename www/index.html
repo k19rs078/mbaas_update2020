@@ -29,22 +29,10 @@
       let uTdata = new UTdata();
       let today = month*100 + day;
       uTdata.set(key, all)
+      uTdata.set(key2, today)//today
       .save()
       .then(function(results){
-        sortData();
-      })
-      .catch(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-warning");
-        $("#display").html("enter fail");
-      })
-
-       uTdata.set(key2, today)//today
-      .save()
-      .then(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-success");
-        $("#display").html("enter success");
+      sortData();
       })
       .catch(function(results){
         $("#display").removeClass();
@@ -62,7 +50,6 @@
           msg +="<tr><td>"+ mt + "月"  + dt + "日</td><td>"+ results[i].get(key) + "kcal" + "</td></tr>";
         }
         msg+="<table>";
-        $("#display").removeClass();
         $("#display").html(msg);
       })
       .catch(function(error){
