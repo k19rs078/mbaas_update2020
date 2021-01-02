@@ -27,9 +27,8 @@
 
     function enterData() {
       let uTdata = new UTdata();
-      let value = parseInt($("#data").val());
       let today = month*100 + day;
-      uTdata.set(key, value)
+      uTdata.set(key, all)
       .save()
       .then(function(results){
         $("#display").removeClass();
@@ -171,7 +170,6 @@
   <h1 class="text-light bg-secondary">カロリー管理</h1>
   <div>
     <p>毎日一回記入してください</p>
-    <input type="text" id="data" placeholder="カロリー"> 
     <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
   </div>
   <div>
