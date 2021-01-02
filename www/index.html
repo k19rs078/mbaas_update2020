@@ -31,9 +31,7 @@
       uTdata.set(key, all)
       .save()
       .then(function(results){
-        $("#display").removeClass();
-        $("#display").addClass("bg-success");
-        $("#display").html("enter success");
+        sortData();
       })
       .catch(function(results){
         $("#display").removeClass();
